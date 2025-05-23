@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Career Quiz - Wanderly</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9fc;
+    }
+    h2 {
+      text-align: center;
+    }
+    .question {
+      margin: 20px 0;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #5c67f2;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Career Personality Quiz</h2>
+
+  <form id="quizForm">
+    <div class="question">
+      <strong>1. Which activity sounds most fun?</strong><br>
+      <label><input type="radio" name="q1" value="creative"> Drawing or writing</label>
+      <label><input type="radio" name="q1" value="logical"> Solving puzzles</label>
+      <label><input type="radio" name="q1" value="helper"> Helping others</label>
+    </div>
+
+    <div class="question">
+      <strong>2. What type of environment do you prefer?</strong><br>
+      <label><input type="radio" name="q2" value="creative"> Free and open</label>
+      <label><input type="radio" name="q2" value="logical"> Quiet and focused</label>
+      <label><input type="radio" name="q2" value="helper"> Energetic and social</label>
+    </div>
+
+    <div class="question">
+      <strong>3. What's your strength?</strong><br>
+      <label><input type="radio" name="q3" value="creative"> Imagination</label>
+      <label><input type="radio" name="q3" value="logical"> Analysis</label>
+      <label><input type="radio" name="q3" value="helper"> Empathy</label>
+    </div>
+
+    <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+  </form>
+
+  <script>
+    function submitQuiz() {
+      const answers = [
+        document.querySelector('input[name="q1"]:checked')?.value,
+        document.querySelector('input[name="q2"]:checked')?.value,
+        document.querySelector('input[name="q3"]:checked')?.value,
+      ];
+
+      if (answers.includes(undefined)) {
+        alert("Please answer all questions!");
+        return;
+      }
+
+      const counts = { creative: 0, logical: 0, helper: 0 };
+      answers.forEach(ans => counts[ans]++);
+
+      let result = "Creative Thinker";
+      if (counts.logical > counts.creative && counts.logical > counts.helper) {
+        result = "Analytical Problem Solver";
+      } else if (counts.helper > counts.creative && counts.helper > counts.logical) {
+        result = "Compassionate Helper";
+      }
+
+      localStorage.setItem("quizResult", result);
+      window.location.href = "results.html";
+    }
+  </script>
+
+</body>
+</html>

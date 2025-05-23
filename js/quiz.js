@@ -1,0 +1,1 @@
+function submitQuiz() { console.log('Quiz submitted'); }

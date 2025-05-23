@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Goal Tracker - Wanderly</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f0f2f8;
+    }
+    h2 {
+      text-align: center;
+    }
+    input[type="text"] {
+      width: 60%;
+      padding: 10px;
+      margin-right: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #5c67f2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    ul {
+      margin-top: 20px;
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #fff;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    li.completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Track Your Career Goals</h2>
+
+  <div style="text-align:center;">
+    <input type="text" id="goalInput" placeholder="Enter a new goal..." />
+    <button onclick="addGoal()">Add</button>
+  </div>
+
+  <ul id="goalList"></ul>
+
+  <script>
+    const goalInput = document.getElementById("goalInput");
+    const goalList = document.getElementById("goalList");
+
+    function loadGoals() {
+      const goals = JSON.parse(localStorage.getItem("goals")) || [];
+      goalList.innerHTML = "";
+      goals.forEach((goal, index) => {
+        const li = document.createElement("li");
+        li.textContent = goal.text;
+        li.className = goal.completed ? "completed" : "";
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = goal.completed;
+        checkbox.onchange = () => toggleGoal(index);
+
+        li.prepend(checkbox);
+        goalList.appendChild(li);
+      });
+    }
+
+    function addGoal() {
+      const text = goalInput.value.trim();
+      if (!text) return;
+      const goals = JSON.parse(localStorage.getItem("goals")) || [];
+      goals.push({ text, completed: false });
+      localStorage.setItem("goals", JSON.stringify(goals));
+      goalInput.value = "";
+      loadGoals();
+    }
+
+    function toggleGoal(index) {
+      const goals = JSON.parse(localStorage.getItem("goals"));
+      goals[index].completed = !goals[index].completed;
+      localStorage.setItem("goals", JSON.stringify(goals));
+      loadGoals();
+    }
+
+    loadGoals();
+  </script>
+
+</body>
+</html>

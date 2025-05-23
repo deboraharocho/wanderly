@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Results - Wanderly</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef2f7;
+      text-align: center;
+      padding-top: 100px;
+    }
+    .result {
+      font-size: 24px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Your Career Personality Type:</h1>
+  <div class="result" id="resultText"></div>
+
+  <script>
+    document.getElementById("resultText").textContent = localStorage.getItem("quizResult") || "No result found.";
+  </script>
+</body>
+</html>
