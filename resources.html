@@ -11,6 +11,7 @@
     }
     h2 {
       color: #333;
+      margin-top: 30px;
     }
     ul {
       margin-bottom: 30px;
@@ -18,14 +19,31 @@
     a {
       color: #5c67f2;
     }
+    .button {
+      display: block;
+      margin: 40px auto 0;
+      padding: 12px 24px;
+      background-color: #5c67f2;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 16px;
+      width: fit-content;
+    }
+    .button:hover {
+      background-color: #4a54e1;
+    }
   </style>
 </head>
 <body>
 
+  <h1>Career Resources</h1>
+
   <h2>Career Exploration Tools</h2>
   <ul>
-    <li><a href="https://www.onetonline.org/" target="_blank">O*NET Online</a></li>
-    <li><a href="https://www.careeronestop.org/" target="_blank">CareerOneStop</a></li>
+    <li><a href="https://www.onetonline.org/" target="_blank">O*NET Online</a> – Explore careers based on skills and interests</li>
+    <li><a href="https://www.careeronestop.org/" target="_blank">CareerOneStop</a> – Job profiles, salary data, and career planning</li>
   </ul>
 
   <h2>Learning Platforms</h2>
@@ -41,10 +59,13 @@
     <li><a href="https://www.indeed.com/career-advice/interviewing" target="_blank">Interview Tips on Indeed</a></li>
   </ul>
 
-  <h2>Suggestions Based on Your Quiz Result</h2>
-  <p><strong>Creative Thinker:</strong> Graphic design, content creation, marketing</p>
-  <p><strong>Problem Solver:</strong> Data analysis, programming, engineering</p>
-  <p><strong>Compassionate Helper:</strong> Nursing, teaching, counseling</p>
+  <h2>Suggestions Based on Quiz Result</h2>
+  <p><strong>Creative Thinker:</strong> Explore careers in design, marketing, writing, or content creation.</p>
+  <p><strong>Analytical Problem Solver:</strong> Consider roles in data science, programming, engineering, or systems analysis.</p>
+  <p><strong>Compassionate Helper:</strong> Look into nursing, counseling, teaching, social work, or public service.</p>
+
+  <!-- Back to Dashboard Button -->
+  <a class="button" href="dashboard.php">Back to Dashboard</a>
 
 </body>
 </html>

@@ -4,6 +4,7 @@ include 'includes/db.php';
 
 $error = "";
 
+// Handle login form
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
     $password = $_POST['password'];
@@ -19,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (password_verify($password, $hashed_password)) {
             $_SESSION['user_id'] = $user_id;
+            $_SESSION['LAST_ACTIVITY'] = time(); // Start activity tracking
             header("Location: dashboard.php");
             exit;
         } else {
@@ -79,25 +81,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             color: #5c67f2;
             text-decoration: none;
         }
-        .error {
+        .error, .timeout {
             color: red;
-            margin-bottom: 10px;
             text-align: center;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
+
     <form method="POST" action="">
         <h2>Login to Wanderly</h2>
+
+        <?php if (isset($_GET['timeout'])): ?>
+            <div class="timeout">Your session expired. Please log in again.</div>
+        <?php endif; ?>
+
         <?php if ($error): ?>
             <div class="error"><?= $error ?></div>
         <?php endif; ?>
+
         <input type="text" name="username" placeholder="Username" required />
         <input type="password" name="password" placeholder="Password" required />
         <button type="submit">Login</button>
+
         <div class="register-link">
             New user? <a href="register.php">Register here</a>
         </div>
     </form>
+
 </body>
 </html>
