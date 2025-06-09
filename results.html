@@ -2,69 +2,86 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Quiz Results - Wanderly</title>
+  <title>Your Quiz Results - Wanderly</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #eef2f7;
+      background-color: #f0f4fc;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
       text-align: center;
-      padding-top: 80px;
+      color: #333;
     }
     .result {
-      font-size: 26px;
-      color: #333;
-      margin-bottom: 20px;
-    }
-    .description {
-      max-width: 600px;
-      margin: 0 auto 30px;
+      margin: 20px 0;
       font-size: 18px;
-      color: #555;
+      text-align: center;
     }
-    .button-group {
+    .percentages {
       margin-top: 20px;
-    }
-    a.button {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 24px;
-      background-color: #5c67f2;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
       font-size: 16px;
     }
-    a.button:hover {
-      background-color: #4a54e1;
+    .percentages div {
+      margin: 8px 0;
+      text-align: center;
+    }
+    .buttons {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .buttons a {
+      text-decoration: none;
+      background-color: #5c67f2;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin: 5px;
+      display: inline-block;
+    }
+    .buttons a:hover {
+      background-color: #4956e5;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h2>Your Career Personality Type:</h2>
+    <div class="result" id="mainResult"></div>
+    <div class="percentages">
+      <div><strong>Creative:</strong> <span id="creative"></span>%</div>
+      <div><strong>Logical:</strong> <span id="logical"></span>%</div>
+      <div><strong>Helper:</strong> <span id="helper"></span>%</div>
+    </div>
 
-  <h1>Your Career Personality Type:</h1>
-  <div class="result" id="resultText"></div>
-  <div class="description" id="descriptionText"></div>
-
-  <div class="button-group">
-    <a class="button" href="quiz.html">Try Quiz Again</a>
-    <a class="button" href="dashboard.php">Back to Dashboard</a>
+    <div class="buttons">
+      <a href="quiz.html">Try Quiz Again</a>
+      <a href="dashboard.php">Back to Dashboard</a>
+    </div>
   </div>
 
   <script>
-    const result = localStorage.getItem("quizResult");
-    const resultText = document.getElementById("resultText");
-    const descriptionText = document.getElementById("descriptionText");
+    const resultData = JSON.parse(localStorage.getItem("quizResult"));
 
-    resultText.textContent = result ? result : "No result found.";
-
-    const descriptions = {
-      "Creative Thinker": "You thrive in imaginative and expressive environments. Careers in design, writing, content creation, or branding could be ideal for your talents.",
-      "Analytical Problem Solver": "You’re logical and detail-oriented. Consider careers in data analysis, programming, engineering, or research-based roles.",
-      "Compassionate Helper": "You’re driven by empathy and connection. Roles in healthcare, education, social work, or community leadership may suit you best."
-    };
-
-    descriptionText.textContent = descriptions[result] || "";
+    if (resultData) {
+      document.getElementById("mainResult").textContent = `You are a: ${resultData.result}`;
+      document.getElementById("creative").textContent = resultData.percentages.creative;
+      document.getElementById("logical").textContent = resultData.percentages.logical;
+      document.getElementById("helper").textContent = resultData.percentages.helper;
+    } else {
+      document.getElementById("mainResult").textContent = "No quiz result found. Please take the quiz first.";
+      document.getElementById("creative").textContent = "-";
+      document.getElementById("logical").textContent = "-";
+      document.getElementById("helper").textContent = "-";
+    }
   </script>
-
 </body>
 </html>

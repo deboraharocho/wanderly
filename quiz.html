@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Career Quiz - Wanderly</title>
+  <title>Career Personality Quiz - Wanderly</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -46,94 +46,70 @@
 <h2>Career Personality Quiz</h2>
 
 <form id="quizForm">
-  <!-- 10 Questions -->
-  <div class="question">
-    <strong>1. What type of project excites you most?</strong>
-    <label><input type="radio" name="q1" value="creative"> Designing something new</label>
-    <label><input type="radio" name="q1" value="logical"> Solving a tricky problem</label>
-    <label><input type="radio" name="q1" value="helper"> Helping someone directly</label>
-  </div>
 
-  <div class="question">
-    <strong>2. How do you prefer to spend your workday?</strong>
-    <label><input type="radio" name="q2" value="creative"> Brainstorming or experimenting</label>
-    <label><input type="radio" name="q2" value="logical"> Working with data or systems</label>
-    <label><input type="radio" name="q2" value="helper"> Engaging with people</label>
-  </div>
+  <!-- 20 Questions -->
+  <script>
+    const questions = [
+      "What type of project excites you most?",
+      "How do you prefer to spend your workday?",
+      "Which tool would you rather use?",
+      "What do others often compliment you on?",
+      "Which activity sounds most fulfilling?",
+      "How do you make decisions?",
+      "Which subject did you enjoy most in school?",
+      "What kind of books do you prefer?",
+      "Your ideal workspace is...",
+      "What motivates you most?",
+      "How do you celebrate success?",
+      "What do you bring to a team?",
+      "What's your favorite part of a project?",
+      "How do you handle stress?",
+      "What kind of role do you take in a group?",
+      "What do you value most in a career?",
+      "What’s your strength?",
+      "Pick a weekend activity:",
+      "What would make you feel proud at work?",
+      "What kind of impact do you want to make?"
+    ];
+    const categories = ["creative", "logical", "helper"];
+    let formContent = "";
+    questions.forEach((q, index) => {
+      const qNum = index + 1;
+      formContent += `<div class="question">
+        <strong>${qNum}. ${q}</strong>
+        <label><input type="radio" name="q${qNum}" value="creative"> ${["Designing something new", "Brainstorming or experimenting", "Sketchpad or design software", "Your imagination", "Creating something beautiful", "With emotion and empathy", "Art or literature", "Fantasy or art books", "Colorful and inspiring", "Self-expression", "Sharing a project", "Innovation and flair", "Brainstorming", "Art or music", "Creative lead", "Freedom and self-expression", "Creativity", "Visiting a gallery", "Launching a new idea", "Change the way people see the world"][index]}</label>
+        <label><input type="radio" name="q${qNum}" value="logical"> ${["Solving a tricky problem", "Working with data or systems", "Spreadsheet or coding tool", "Your logic and reasoning", "Solving a puzzle", "With facts and logic", "Math or science", "Non-fiction or biographies", "Organized and quiet", "Efficiency and results", "Setting new goals", "Structure and analysis", "Planning", "Going for a run", "Analytical support", "Growth and innovation", "Problem solving", "Learning something new", "Optimizing a system", "Improve how things work"][index]}</label>
+        <label><input type="radio" name="q${qNum}" value="helper"> ${["Helping someone directly", "Engaging with people", "Journal or communication app", "Your compassion", "Making someone’s day", "With intuition and kindness", "Social studies", "Self-help or memoirs", "Cozy and communal", "Making a difference", "Volunteering", "Support and empathy", "Helping teammates", "Talking to someone", "Team motivator", "Connection and support", "Empathy", "Volunteering", "Helping a person grow", "Make others feel heard and supported"][index]}</label>
+      </div>`;
+    });
+    document.write(formContent);
+  </script>
 
-  <div class="question">
-    <strong>3. Which tool would you rather use?</strong>
-    <label><input type="radio" name="q3" value="creative"> Sketchpad or design software</label>
-    <label><input type="radio" name="q3" value="logical"> Spreadsheet or coding tool</label>
-    <label><input type="radio" name="q3" value="helper"> Journal or communication app</label>
-  </div>
-
-  <div class="question">
-    <strong>4. What's your greatest strength?</strong>
-    <label><input type="radio" name="q4" value="creative"> Imagination</label>
-    <label><input type="radio" name="q4" value="logical"> Logic</label>
-    <label><input type="radio" name="q4" value="helper"> Empathy</label>
-  </div>
-
-  <div class="question">
-    <strong>5. How do you handle challenges?</strong>
-    <label><input type="radio" name="q5" value="creative"> Think outside the box</label>
-    <label><input type="radio" name="q5" value="logical"> Analyze and break it down</label>
-    <label><input type="radio" name="q5" value="helper"> Talk it through with someone</label>
-  </div>
-
-  <div class="question">
-    <strong>6. What kind of workspace do you thrive in?</strong>
-    <label><input type="radio" name="q6" value="creative"> Free-flowing and expressive</label>
-    <label><input type="radio" name="q6" value="logical"> Quiet and structured</label>
-    <label><input type="radio" name="q6" value="helper"> Collaborative and active</label>
-  </div>
-
-  <div class="question">
-    <strong>7. Your dream job involves...</strong>
-    <label><input type="radio" name="q7" value="creative"> Telling stories or making art</label>
-    <label><input type="radio" name="q7" value="logical"> Building or solving complex problems</label>
-    <label><input type="radio" name="q7" value="helper"> Making an impact on others' lives</label>
-  </div>
-
-  <div class="question">
-    <strong>8. What was your favorite subject in school?</strong>
-    <label><input type="radio" name="q8" value="creative"> Art or Literature</label>
-    <label><input type="radio" name="q8" value="logical"> Math or Science</label>
-    <label><input type="radio" name="q8" value="helper"> Psychology or Social Studies</label>
-  </div>
-
-  <div class="question">
-    <strong>9. Which describes you best?</strong>
-    <label><input type="radio" name="q9" value="creative"> Curious and expressive</label>
-    <label><input type="radio" name="q9" value="logical"> Precise and methodical</label>
-    <label><input type="radio" name="q9" value="helper"> Kind and thoughtful</label>
-  </div>
-
-  <div class="question">
-    <strong>10. What motivates you most?</strong>
-    <label><input type="radio" name="q10" value="creative"> Creating beauty or meaning</label>
-    <label><input type="radio" name="q10" value="logical"> Understanding how things work</label>
-    <label><input type="radio" name="q10" value="helper"> Helping people succeed</label>
-  </div>
-
-  <!-- Submit and Back buttons -->
   <button type="button" onclick="submitQuiz()">Submit Quiz</button>
   <a class="button" href="dashboard.php">Back to Dashboard</a>
 </form>
 
 <script>
 function submitQuiz() {
+  if (!confirm("Are you sure you want to submit your answers?")) return;
+
   const counts = { creative: 0, logical: 0, helper: 0 };
 
-  for (let i = 1; i <= 10; i++) {
-    let answer = document.querySelector(`input[name="q${i}"]:checked`);
+  for (let i = 1; i <= 20; i++) {
+    const answer = document.querySelector(`input[name="q${i}"]:checked`);
     if (!answer) {
       alert("Please answer all questions before submitting.");
       return;
     }
     counts[answer.value]++;
   }
+
+  const total = 20;
+  const percentages = {
+    creative: Math.round((counts.creative / total) * 100),
+    logical: Math.round((counts.logical / total) * 100),
+    helper: Math.round((counts.helper / total) * 100)
+  };
 
   let result = "Creative Thinker";
   if (counts.logical > counts.creative && counts.logical > counts.helper) {
@@ -142,7 +118,15 @@ function submitQuiz() {
     result = "Compassionate Helper";
   }
 
-  localStorage.setItem("quizResult", result);
+  const history = JSON.parse(localStorage.getItem("quizHistory")) || [];
+  history.push({
+    result: result,
+    percentages: percentages,
+    timestamp: new Date().toLocaleString()
+  });
+  localStorage.setItem("quizHistory", JSON.stringify(history));
+  localStorage.setItem("quizResult", JSON.stringify({ result, percentages }));
+
   window.location.href = "results.html";
 }
 </script>
