@@ -143,3 +143,8 @@ Each week followed an iterative cycle of planning, development, and reflection. 
 Wanderly is a personalized career guidance platform that helps users discover their professional strengths through an engaging 20-question quiz. Based on the result, users receive a categorized score, tailored resources, and can track their weekly goals. The system features secure login, dynamic dashboard updates, session timeout protection, and a relaxing visual theme to reduce stress during exploration. Wanderly empowers users to better understand themselves and confidently pursue their next career steps.
 
 ---
+## 🎥 Demo Video
+
+Watch a 5-minute walkthrough of Wanderly showcasing key features like login, dashboard, quiz, results, resources, and goal tracking:
+
+🔗 [Click here to watch the demo](https://drive.google.com/file/d/1XWif7MdbEJL74eyXsNDQgjRrMC5fE54S/view?usp=sharing)
