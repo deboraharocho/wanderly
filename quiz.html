@@ -5,24 +5,54 @@
   <title>Career Personality Quiz - Wanderly</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background-color: #f9f9fc;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(120deg, #e0eafc, #cfdef3);
+      padding: 40px 10px;
+      display: flex;
+      justify-content: center;
     }
+
+    .quiz-container {
+      max-width: 800px;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+    }
+
     h2 {
       text-align: center;
+      color: #333;
       margin-bottom: 30px;
+      font-size: 2rem;
     }
+
     .question {
       margin: 20px 0;
     }
+
+    .question strong {
+      display: block;
+      margin-bottom: 10px;
+      color: #444;
+    }
+
     label {
       display: block;
-      margin: 5px 0;
+      margin: 6px 0;
+      padding-left: 5px;
+      cursor: pointer;
     }
+
+    input[type="radio"] {
+      margin-right: 8px;
+    }
+
     button, a.button {
-      display: block;
-      margin: 20px auto 10px;
+      display: inline-block;
+      margin: 30px 10px 10px;
       padding: 12px 24px;
       background-color: #5c67f2;
       color: white;
@@ -30,64 +60,101 @@
       border: none;
       border-radius: 6px;
       font-size: 16px;
-      text-align: center;
-      width: fit-content;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s;
     }
-    a.button {
-      text-decoration: none;
-    }
+
     button:hover, a.button:hover {
       background-color: #4a54e1;
+      transform: scale(1.05);
+    }
+
+    @media screen and (max-width: 600px) {
+      .quiz-container {
+        padding: 20px;
+      }
+
+      button, a.button {
+        width: 100%;
+        margin: 10px 0;
+      }
     }
   </style>
 </head>
 <body>
 
-<h2>Career Personality Quiz</h2>
+<div class="quiz-container">
+  <h2>Career Personality Quiz</h2>
 
-<form id="quizForm">
+  <form id="quizForm">
+    <script>
+      const questions = [
+        "What type of project excites you most?",
+        "How do you prefer to spend your workday?",
+        "Which tool would you rather use?",
+        "What do others often compliment you on?",
+        "Which activity sounds most fulfilling?",
+        "How do you make decisions?",
+        "Which subject did you enjoy most in school?",
+        "What kind of books do you prefer?",
+        "Your ideal workspace is...",
+        "What motivates you most?",
+        "How do you celebrate success?",
+        "What do you bring to a team?",
+        "What's your favorite part of a project?",
+        "How do you handle stress?",
+        "What kind of role do you take in a group?",
+        "What do you value most in a career?",
+        "What’s your strength?",
+        "Pick a weekend activity:",
+        "What would make you feel proud at work?",
+        "What kind of impact do you want to make?"
+      ];
 
-  <!-- 20 Questions -->
-  <script>
-    const questions = [
-      "What type of project excites you most?",
-      "How do you prefer to spend your workday?",
-      "Which tool would you rather use?",
-      "What do others often compliment you on?",
-      "Which activity sounds most fulfilling?",
-      "How do you make decisions?",
-      "Which subject did you enjoy most in school?",
-      "What kind of books do you prefer?",
-      "Your ideal workspace is...",
-      "What motivates you most?",
-      "How do you celebrate success?",
-      "What do you bring to a team?",
-      "What's your favorite part of a project?",
-      "How do you handle stress?",
-      "What kind of role do you take in a group?",
-      "What do you value most in a career?",
-      "What’s your strength?",
-      "Pick a weekend activity:",
-      "What would make you feel proud at work?",
-      "What kind of impact do you want to make?"
-    ];
-    const categories = ["creative", "logical", "helper"];
-    let formContent = "";
-    questions.forEach((q, index) => {
-      const qNum = index + 1;
-      formContent += `<div class="question">
-        <strong>${qNum}. ${q}</strong>
-        <label><input type="radio" name="q${qNum}" value="creative"> ${["Designing something new", "Brainstorming or experimenting", "Sketchpad or design software", "Your imagination", "Creating something beautiful", "With emotion and empathy", "Art or literature", "Fantasy or art books", "Colorful and inspiring", "Self-expression", "Sharing a project", "Innovation and flair", "Brainstorming", "Art or music", "Creative lead", "Freedom and self-expression", "Creativity", "Visiting a gallery", "Launching a new idea", "Change the way people see the world"][index]}</label>
-        <label><input type="radio" name="q${qNum}" value="logical"> ${["Solving a tricky problem", "Working with data or systems", "Spreadsheet or coding tool", "Your logic and reasoning", "Solving a puzzle", "With facts and logic", "Math or science", "Non-fiction or biographies", "Organized and quiet", "Efficiency and results", "Setting new goals", "Structure and analysis", "Planning", "Going for a run", "Analytical support", "Growth and innovation", "Problem solving", "Learning something new", "Optimizing a system", "Improve how things work"][index]}</label>
-        <label><input type="radio" name="q${qNum}" value="helper"> ${["Helping someone directly", "Engaging with people", "Journal or communication app", "Your compassion", "Making someone’s day", "With intuition and kindness", "Social studies", "Self-help or memoirs", "Cozy and communal", "Making a difference", "Volunteering", "Support and empathy", "Helping teammates", "Talking to someone", "Team motivator", "Connection and support", "Empathy", "Volunteering", "Helping a person grow", "Make others feel heard and supported"][index]}</label>
-      </div>`;
-    });
-    document.write(formContent);
-  </script>
+      const categories = ["creative", "logical", "helper"];
 
-  <button type="button" onclick="submitQuiz()">Submit Quiz</button>
-  <a class="button" href="dashboard.php">Back to Dashboard</a>
-</form>
+      const creativeAnswers = [
+        "Designing something new", "Brainstorming or experimenting", "Sketchpad or design software", "Your imagination",
+        "Creating something beautiful", "With emotion and empathy", "Art or literature", "Fantasy or art books",
+        "Colorful and inspiring", "Self-expression", "Sharing a project", "Innovation and flair", "Brainstorming",
+        "Art or music", "Creative lead", "Freedom and self-expression", "Creativity", "Visiting a gallery",
+        "Launching a new idea", "Change the way people see the world"
+      ];
+
+      const logicalAnswers = [
+        "Solving a tricky problem", "Working with data or systems", "Spreadsheet or coding tool", "Your logic and reasoning",
+        "Solving a puzzle", "With facts and logic", "Math or science", "Non-fiction or biographies",
+        "Organized and quiet", "Efficiency and results", "Setting new goals", "Structure and analysis", "Planning",
+        "Going for a run", "Analytical support", "Growth and innovation", "Problem solving", "Learning something new",
+        "Optimizing a system", "Improve how things work"
+      ];
+
+      const helperAnswers = [
+        "Helping someone directly", "Engaging with people", "Journal or communication app", "Your compassion",
+        "Making someone’s day", "With intuition and kindness", "Social studies", "Self-help or memoirs",
+        "Cozy and communal", "Making a difference", "Volunteering", "Support and empathy", "Helping teammates",
+        "Talking to someone", "Team motivator", "Connection and support", "Empathy", "Volunteering",
+        "Helping a person grow", "Make others feel heard and supported"
+      ];
+
+      let formContent = "";
+      questions.forEach((q, index) => {
+        const qNum = index + 1;
+        formContent += `<div class="question">
+          <strong>${qNum}. ${q}</strong>
+          <label><input type="radio" name="q${qNum}" value="creative"> ${creativeAnswers[index]}</label>
+          <label><input type="radio" name="q${qNum}" value="logical"> ${logicalAnswers[index]}</label>
+          <label><input type="radio" name="q${qNum}" value="helper"> ${helperAnswers[index]}</label>
+        </div>`;
+      });
+
+      document.write(formContent);
+    </script>
+
+    <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+    <a class="button" href="dashboard.php">Back to Dashboard</a>
+  </form>
+</div>
 
 <script>
 function submitQuiz() {

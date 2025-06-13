@@ -1,37 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Wanderly</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Wanderly</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
       margin: 0;
+      padding: 0;
+      background-color: #f5f6fc;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #222;
+      text-align: center;
     }
+
+    .container {
+      max-width: 600px;
+      margin: 80px auto;
+      padding: 20px;
+    }
+
     h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    p.subtitle {
+      font-size: 1.2rem;
+      color: #666;
       margin-bottom: 30px;
     }
-    a.button {
+
+    .btn {
+      display: inline-block;
       padding: 12px 24px;
-      background-color: #5c67f2;
-      color: white;
+      background-color: #6366f1;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
       text-decoration: none;
-      border-radius: 6px;
-      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
     }
-    a.button:hover {
-      background-color: #4a54e1;
+
+    .btn:hover {
+      background-color: #4f46e5;
+    }
+
+    .how-it-works {
+      margin-top: 50px;
+      text-align: left;
+    }
+
+    .how-it-works h3 {
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .how-it-works ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 10px;
+    }
+
+    .how-it-works li {
+      margin: 10px 0;
+      font-size: 1rem;
+    }
+
+    blockquote {
+      margin-top: 40px;
+      font-style: italic;
+      color: #555;
+    }
+
+    i {
+      color: #4f46e5;
+      font-size: 48px;
+      margin-bottom: 15px;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to Wanderly</h1>
-  <a class="button" href="login.php">Login</a>
+  <div class="container">
+    <i class="fas fa-compass"></i>
+    <h1>Welcome to Wanderly</h1>
+    <p class="subtitle">Discover your career path with a quick personality quiz and helpful goal tracker.</p>
+
+    <a href="login.php" class="btn">Login</a>
+
+    <div class="how-it-works">
+      <h3>How Wanderly Works:</h3>
+      <ul>
+        <li>✨ Take a quick personality quiz</li>
+        <li>📊 Get matched with your career style</li>
+        <li>🎯 Set goals and track your growth</li>
+      </ul>
+    </div>
+
+    <blockquote>
+      "Wanderly helped me find clarity in my career path!"
+    </blockquote>
+  </div>
 </body>
 </html>
